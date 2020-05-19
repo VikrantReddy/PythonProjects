@@ -1,0 +1,17 @@
+        <div class = post>
+            
+            <div class = heading>
+                <h3>
+                    title1
+                </h3>
+            </div>
+
+            <img src = " pic1 ">
+
+            <div class = description>
+                <p>
+                    description1
+                </p>
+            </div>
+            
+        </div>
