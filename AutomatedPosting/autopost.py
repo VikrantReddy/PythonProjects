@@ -3,7 +3,7 @@ import shutil
 from os import path
 
 
-def writepost(Title,imagelink,description):
+def writePost(Title,imagelink,description):
 
     ##Making a duplicate of the format page
     ##Adding the title img and description to the duplicate format file
@@ -28,11 +28,46 @@ def writepost(Title,imagelink,description):
     fin.close()
     fout.close()
 
+    updateHtml()
+
+    return
+
+
+def updateHtml():
+    fpost = open("out.txt","r")
+
+    post = fpost.read()
+    
+    fhtml = open("index.html","r")
+    content = fhtml.readlines()
+    fhtml.close()
+
+
+    Word = '<!FirstPost>\n'
+    
+
+    for index,word in enumerate(content):
+        for letter in word:
+            if letter == "!":
+                content[index] = "<!FirstPost> \n {}  /\n \n ".format(post)
+    
+    listToStr = ''.join([str(elem) for elem in content]) 
+
+
+    fhtml = open("index.html","w")
+    fhtml.write(listToStr)
+    fhtml.close()
+
+
+    fhtml.close()
+    fpost.close()
+    return 
+
 
 Title = input("Enter the Title:")
 Image = input("Enter the Name of the image with its extension:")
 Description = input("Enter the Name of the file with the description:")
 
-writepost(Title,Image,Description)
+writePost(Title,Image,Description)
 
 
